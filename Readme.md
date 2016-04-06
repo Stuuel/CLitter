@@ -9,9 +9,8 @@ Thanks to Jumpstart Lab for the Tutorial <3
 2. t - tweet from your command line
 3. dm - write dm to a user (the user has to be your follower)
 4. marketing - send a dm to all your followers
-***
+
 **You have to be carefull, you have 15 calls per 15 minute window. Have to fix this some how**
-***
 
 ## Changelog
 1. V0.3 - Send DM too all your Followers
