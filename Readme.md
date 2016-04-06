@@ -8,6 +8,10 @@ Install jumpstart_auth
 
 `gem install jumpstart_auth`
 
+Install twitter
+
+`gem install twitter`
+
 ## Commands
 
 `Ruby CLitter.rb`
