@@ -48,8 +48,7 @@ class MicroBlogger
     puts "Welcome to the CLitter Twitter Client"
     while command != "q"
       printf "enter command: "
-      input = gets.chomp
-      parts = input.split(" ")
+      parts = gets.chomp.split(" ")
       command = parts[0]
       case command
         when 'q' then puts "Goodbye!"
