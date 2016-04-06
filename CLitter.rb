@@ -7,6 +7,7 @@ class MicroBlogger
     puts "Initializing CLitter"
     @client = JumpstartAuth.twitter
   end
+  
   def tweet(message)
     if message.length > 140
       puts "Warning, your message is to long"
@@ -45,7 +46,6 @@ class MicroBlogger
   
   def run
     puts "Welcome to the CLitter Twitter Client"
-
     while command != "q"
       printf "enter command: "
       input = gets.chomp
