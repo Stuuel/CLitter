@@ -45,7 +45,7 @@ class MicroBlogger
   
   def run
     puts "Welcome to the CLitter Twitter Client"
-    command = ""
+
     while command != "q"
       printf "enter command: "
       input = gets.chomp
