@@ -7,7 +7,7 @@ class MicroBlogger
     puts "Initializing CLitter"
     @client = JumpstartAuth.twitter
   end
-  
+
   def tweet(message)
     if message.length > 140
       puts "Warning, your message is to long"
@@ -15,7 +15,7 @@ class MicroBlogger
       @client.update(message)
     end
   end
-  
+
   def dm(target, message)
     screen_names = @client.followers.collect{ |follower|@client.user(follower).screen_name}
     if screen_names.include?(target)
@@ -27,7 +27,7 @@ class MicroBlogger
       puts "You can send dm only to people who follow you"
     end
   end
-  
+
   def followers_list
     screen_names = []
     users = @client.followers
@@ -37,15 +37,16 @@ class MicroBlogger
     end
     return screen_names
   end
-  
+
   def marketing_to_followers(message)
     followers_list.each do |screen_name|
       dm(screen_name, message)
     end
   end
-  
+
   def run
     puts "Welcome to the CLitter Twitter Client"
+    command = ""
     while command != "q"
       printf "enter command: "
       parts = gets.chomp.split(" ")
@@ -60,7 +61,7 @@ class MicroBlogger
       end
     end
   end
-  
+
   blogger = MicroBlogger.new
   blogger.run
 end
