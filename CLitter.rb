@@ -1,4 +1,5 @@
 require 'jumpstart_auth'
+require 'rainbow/ext/string'
 
 class MicroBlogger
   attr_reader :client
@@ -6,11 +7,12 @@ class MicroBlogger
   def initialize
     puts "Initializing CLitter"
     @client = JumpstartAuth.twitter
+    puts "\e[H\e[2J"
   end
 
   def tweet(message)
     if message.length > 140
-      puts "Warning, your message is to long"
+      puts "Warning, your message is too long".color(:red)
     else
       @client.update(message)
     end
@@ -19,12 +21,12 @@ class MicroBlogger
   def dm(target, message)
     screen_names = @client.followers.collect{ |follower|@client.user(follower).screen_name}
     if screen_names.include?(target)
-      puts "Trying to send #{target} this direct message:"
-      puts message
+      puts "Sending #{target} this direct message:".color(:yellow)
+      puts message.color(:yellow)
       message = "d @#{target} #{message}"
       tweet(message)
     else
-      puts "You can send dm only to people who follow you"
+      puts "You can send direct messages only to people who follow you".color(:red)
     end
   end
 
@@ -45,10 +47,10 @@ class MicroBlogger
   end
 
   def run
-    puts "Welcome to the CLitter Twitter Client"
+    puts "Welcome to the CLitter Twitter Client".color(:cyan)
     command = ""
     while command != "q"
-      printf "enter command: "
+      printf "enter command: ".color(:green)
       parts = gets.chomp.split(" ")
       command = parts[0]
       case command
@@ -57,7 +59,7 @@ class MicroBlogger
         when 'dm' then dm(parts[1], parts[2..-1].join(" "))
         when 'marketing' then puts marketing_to_followers(parts[1..-1].join(" "))
         else
-          puts "Sorry, I don't know how to #{command} and now i am sad."
+          puts "Sorry, I don't know how to #{command} and now i am sad.".color(:red)
       end
     end
   end
