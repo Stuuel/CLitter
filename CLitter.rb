@@ -48,13 +48,18 @@ class MicroBlogger
 
   def run
     puts "Welcome to the CLitter Twitter Client".color(:cyan)
+    puts "Use one of the following commands:".color(:yellow)
+    puts "q - quit the tool".color(:yellow)
+    puts "t - send a tweet".color(:yellow)
+    puts "dm - write a dm to a user".color(:yellow)
+    puts "marketing - send a dm to all your follower".color(:yellow)
     command = ""
     while command != "q"
       printf "enter command: ".color(:green)
       parts = gets.chomp.split(" ")
       command = parts[0]
       case command
-        when 'q' then puts "Goodbye!"
+        when 'q' then puts "Goodbye!".color(:magenta)
         when 't' then tweet(parts[1..-1].join(" "))
         when 'dm' then dm(parts[1], parts[2..-1].join(" "))
         when 'marketing' then puts marketing_to_followers(parts[1..-1].join(" "))
